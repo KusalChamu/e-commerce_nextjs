@@ -37,6 +37,9 @@ export const ProductCard = ({ product }: Props) => {
                 </CardHeader>
 
                 <CardContent className="p-4 pt-0 flex flex-col items-start gap-2">
+                    {product.description && (
+                        <p className="text-lg text-sm text-gray-900">{product.description}</p>
+                    )}
                     {price?.unit_amount && (
                         <p className="text-lg font-bold text-gray-900">
                             ${(price.unit_amount / 100).toFixed(2)}
