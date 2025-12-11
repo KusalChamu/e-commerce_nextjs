@@ -6,6 +6,7 @@ import { Card, CardContent, CardTitle } from "./ui/card"
 import Image from "next/image"
 
 interface Props {
+    //tyoe of prop is product
     products: Stripe.Product[]
 }
 
