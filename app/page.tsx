@@ -11,7 +11,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="w-full py-16 bg-muted">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4">
@@ -19,7 +19,7 @@ export default async function Home() {
           {/* Text */}
           <div className="space-y-4 md:w-1/2">
             <h2 className="text-4xl font-bold tracking-tight">
-              Welcome to my E-commerce
+              ENDURO
             </h2>
 
             <p className="text-muted-foreground text-lg">
@@ -38,7 +38,7 @@ export default async function Home() {
               width={450}
               height={450}
               src={products.data[0]?.images?.[0] || "/placeholder.png"}
-              className="rounded-xl shadow-lg object-cover"
+              className="rounded-xl shadow-lg object-cover max-w-full"
             />
           </div>
         </div>
@@ -51,4 +51,4 @@ export default async function Home() {
       </section>
     </div>
   );
-} 
+}

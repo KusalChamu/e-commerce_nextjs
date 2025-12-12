@@ -32,7 +32,7 @@ export const Navbar = () => {
 
       {/* Logo */}
       <div className="text-xl font-bold text-gray-800 hover:text-gray-600 transition">
-        <Link href="/">My E-commerce Site</Link>
+        <Link href="/"> E N D U R O </Link>
       </div>
 
       {/* Desktop Navigation */}
