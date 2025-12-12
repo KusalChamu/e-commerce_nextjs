@@ -5,8 +5,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useCartStore } from "@/store/cart-store"
 import { checkoutAction } from "./checkout-action"
 
-export default function CheckoutPage() {
+/* --------------------------- SEO METADATA --------------------------- */
+export const metadata = {
+  title: "Checkout - ENDURO Store",
+  description: "Secure checkout page for ENDURO Store. Complete your purchase safely.",
+  robots: {
+    index: false, // Do not index this page
+    follow: false, // Do not follow links from this page
+    nocache: true, // Prevent caching
+  },
+}
+/* ------------------------------------------------------------------- */
 
+export default function CheckoutPage() {
     const { items, addItem, removeItem } = useCartStore()
     const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
