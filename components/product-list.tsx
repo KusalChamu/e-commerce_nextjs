@@ -14,8 +14,8 @@ export const ProductList = ({ products }: Props) => {
 
     const filteredProduct = products.filter((product)=>{
         const term = searchTerm.toLowerCase()
-        const nameMatch = product.name.toLowerCase().includes(term)
-        //boolean
+        const nameMatch = product.name.toLowerCase().includes(term) //"running shoes".includes("shoe") // true
+        //boolean(safe search to prevent null errors)
         const descriptionMatch = product.description
             ? product.description.toLowerCase().includes(term)
             : false
