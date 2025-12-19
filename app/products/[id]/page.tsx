@@ -1,5 +1,6 @@
 import { ProductDetail } from "@/components/product-detail";
 import { stripe } from "@/lib/stripe";
+import { notFound } from "next/navigation";
 
 interface ProductPageProps {
   params: { id: string };
@@ -7,7 +8,15 @@ interface ProductPageProps {
 
 /* ------------------- DYNAMIC METADATA ------------------- */
 export async function generateMetadata({ params }: ProductPageProps) {
-  const { id } = params;
+  const { id } = (await params) as { id?: string };
+  if (!id || typeof id !== "string") {
+    // Fallback metadata when id is missing
+    return {
+      title: `Product – ENDURO Store`,
+      description: "Explore this product at ENDURO Store.",
+    };
+  }
+
   const product = await stripe.products.retrieve(id, { expand: ["default_price"] });
 
   return {
@@ -30,7 +39,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
           ]
         : [],
       locale: "en_US",
-      type: "product",
+      type: "website",
     },
     robots: {
       index: true,
@@ -41,7 +50,12 @@ export async function generateMetadata({ params }: ProductPageProps) {
 /* -------------------------------------------------------- */
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { id } = params;
+  const { id } = (await params) as { id?: string };
+  if (!id || typeof id !== "string") {
+    // If id is missing, render 404
+    notFound();
+  }
+
   const product = await stripe.products.retrieve(id, {
     expand: ["default_price"],
   });
